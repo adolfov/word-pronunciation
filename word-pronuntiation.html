@@ -1,0 +1,46 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+
+<polymer-element name="word-pronuntiation">
+<template>
+
+  <paper-input value="{{word}}" floatingLabel label="Write a word"></paper-input>
+  <core-icon-button icon="search" on-tap="{{go}}"></core-icon-button>
+
+  <core-ajax id="ajax" 
+      url="http://api.wordnik.com:80/v4/word.json/{{word}}/pronunciations?useCanonical=false&limit=1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5"
+      on-core-response="{{loaded}}"
+      handleAs="json">
+    </core-ajax>
+
+  <div layout vertical center>
+    <template repeat="{{post in pronuntiation}}">
+      <div>{{post.rawType}} : {{post.raw}}</div>
+    </template>
+  </div>
+</template>
+
+<script>
+  Polymer({
+     created: function() {
+      this.pronuntiation = [];
+      this.word = '';
+    },
+    loaded: function() {
+      if (this.$.ajax.response){
+        this.pronuntiation = this.$.ajax.response.slice(0);
+      }
+      if(this.pronuntiation.length == 0){
+        this.pronuntiation = [{"rawType":"pronuntiation", 'raw':'not found'}];
+      }
+    },
+    go: function() {
+      if (this.word){
+        this.$.ajax.go();
+      }
+    }
+  });
+</script>
+</polymer-element>
