@@ -3,7 +3,7 @@
 <link rel="import" href="../components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 
-<polymer-element name="word-pronuntiation">
+<polymer-element name="word-pronunciation">
 <template>
 
   <paper-input value="{{word}}" floatingLabel label="Write a word"></paper-input>
@@ -16,7 +16,7 @@
     </core-ajax>
 
   <div layout vertical center>
-    <template repeat="{{post in pronuntiation}}">
+    <template repeat="{{post in pronunciation}}">
       <div>{{post.rawType}} : {{post.raw}}</div>
     </template>
   </div>
@@ -25,15 +25,15 @@
 <script>
   Polymer({
      created: function() {
-      this.pronuntiation = [];
+      this.pronunciation = [];
       this.word = '';
     },
     loaded: function() {
       if (this.$.ajax.response){
-        this.pronuntiation = this.$.ajax.response.slice(0);
+        this.pronunciation = this.$.ajax.response.slice(0);
       }
-      if(this.pronuntiation.length == 0){
-        this.pronuntiation = [{"rawType":"pronuntiation", 'raw':'not found'}];
+      if(this.pronunciation.length == 0){
+        this.pronunciation = [{"rawType":"pronunciation", 'raw':'not found'}];
       }
     },
     go: function() {
