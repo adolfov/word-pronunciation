@@ -1,0 +1,22 @@
+{
+  "name": "word-pronuntiation",
+  "version": "0.0.0",
+  "homepage": "https://github.com/adolfov/word-pronuntiation",
+  "description": "Polymer component that produces the pronunciation for a word",
+  "keywords": [
+    "word-pronunciation",
+    "web-components"
+  ],
+  "authors": [
+    "adolfov"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ]
+}
