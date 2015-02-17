@@ -8,7 +8,10 @@ Please feel free to improve the component.
 
 ## Install
 
-Download word-pronunciation.html
+- bower install word-pronunciation
+ 
+
+- or just download word-pronunciation.html
 
 ## Usage
 
